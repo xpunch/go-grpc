@@ -56,3 +56,44 @@ func main() {
 }
 ```
 
+## Writing a Micro Function
+
+Functions are one time executing Services. They look identical to go-micro Services which means you can swap out `micro.NewFunction` for `grpc.NewFunction` 
+with zero other code changes.
+
+```go
+package main
+
+import (
+	"log"
+
+	"github.com/micro/go-grpc"
+	hello "github.com/micro/go-grpc/examples/greeter/server/proto/hello"
+	"github.com/micro/go-micro"
+
+	"golang.org/x/net/context"
+)
+
+type Say struct{}
+
+func (s *Say) Hello(ctx context.Context, req *hello.Request, rsp *hello.Response) error {
+	rsp.Msg = "Hello " + req.Name
+	return nil
+}
+
+func main() {
+	fn := grpc.NewFunction(
+		micro.Name("go.micro.fnc.greeter"),
+	)
+
+	fn.Init()
+
+	fn.Handle(new(Say))
+
+	// Run server
+	if err := fn.Run(); err != nil {
+		log.Fatal(err)
+	}
+}
+```
+

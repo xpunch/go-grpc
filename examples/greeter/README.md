@@ -6,6 +6,9 @@ An example Go-Micro based GRPC service
 
 - **Server** - a GRPC greeter service
 - **Client** - a GRPC client that calls the service once
+- **function** - a GPRC greeter function
+
+## Test Service
 
 Run Service
 ```
@@ -21,3 +24,16 @@ $ go run client/main.go --registry=mdns
 Hello John
 ```
 
+## Test Function
+
+Run function
+
+```
+go run function/main.go --registry=mdns
+```
+
+Query function
+
+```
+go run client/main.go --registry=mdns --service_name="go.micro.fnc.greeter"
+```

@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 
+	"github.com/micro/cli"
+	"github.com/micro/go-micro"
 	"github.com/micro/go-grpc"
 	hello "github.com/micro/go-grpc/examples/greeter/server/proto/hello"
 	"github.com/micro/go-micro/metadata"
@@ -10,12 +12,22 @@ import (
 	"golang.org/x/net/context"
 )
 
+var (
+	serviceName string
+)
+
 func main() {
 	service := grpc.NewService()
-	service.Init()
+	service.Init(
+		micro.Flags(cli.StringFlag{
+			Name: "service_name",
+			Value: "go.micro.srv.greeter",
+			Destination: &serviceName,
+		}),
+	)
 
 	// use the generated client stub
-	cl := hello.NewSayClient("go.micro.srv.greeter", service.Client())
+	cl := hello.NewSayClient(serviceName, service.Client())
 
 	// Set arbitrary headers in context
 	ctx := metadata.NewContext(context.Background(), map[string]string{

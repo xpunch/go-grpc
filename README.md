@@ -97,3 +97,31 @@ func main() {
 }
 ```
 
+## Using with Micro toolkit
+
+You may want to use the micro toolkit with grpc services. To do this simply include the grpc client plugin and rebuild the toolkit.
+
+
+Get micro
+
+```
+go get github.com/micro/micro
+```
+
+Create a plugins.go file
+```go
+package main
+
+import _ "github.com/micro/go-plugins/client/grpc"
+```
+
+Build binary
+```shell
+// For local use
+go build -i -o micro ./main.go ./plugins.go
+```
+
+Flag usage of plugins
+```shell
+micro --client=grpc
+```

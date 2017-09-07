@@ -4,9 +4,10 @@ An example Go-Micro based GRPC service
 
 ## What's here?
 
-- **Server** - a GRPC greeter service
-- **Client** - a GRPC client that calls the service once
+- **server** - a GRPC greeter service
+- **client** - a GRPC client that calls the service once
 - **function** - a GPRC greeter function
+- **gateway** - a grpc-gateway
 
 ## Test Service
 
@@ -36,4 +37,24 @@ Query function
 
 ```
 go run client/main.go --registry=mdns --service_name="go.micro.fnc.greeter"
+```
+
+## Test Gateway
+
+Run server with address set
+
+```
+go run server/main.go --registry=mdns --server_address=localhost:9090
+```
+
+Run gateway
+
+```
+go run gateway/main.go
+```
+
+Curl gateway
+
+```
+curl -d '{"name": "john"}' http://localhost:8080/greeter/hello
 ```

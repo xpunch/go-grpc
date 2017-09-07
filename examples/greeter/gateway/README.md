@@ -13,7 +13,7 @@ have generated the gateway from the same proto as the greeter server but with ad
 Run the go.micro.srv.greeter service
 
 ```
-go run ../greeter/srv/main.go --server_address=localhost:9090
+go run ../server/main.go --server_address=localhost:9090
 ```
 
 Run the gateway

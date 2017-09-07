@@ -1,12 +1,12 @@
 # Greeter Service
 
-An example Go-Micro based GRPC service
+An example Go-Micro based gRPC service
 
 ## What's here?
 
-- **server** - a GRPC greeter service
-- **client** - a GRPC client that calls the service once
-- **function** - a GPRC greeter function
+- **server** - a gRPC greeter service
+- **client** - a gRPC client that calls the service once
+- **function** - a gRPC greeter function
 - **gateway** - a grpc-gateway
 
 ## Test Service

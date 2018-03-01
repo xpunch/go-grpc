@@ -4,9 +4,9 @@ import (
 	"fmt"
 
 	"github.com/micro/cli"
-	"github.com/micro/go-micro"
 	"github.com/micro/go-grpc"
 	hello "github.com/micro/go-grpc/examples/greeter/server/proto/hello"
+	"github.com/micro/go-micro"
 	"github.com/micro/go-micro/metadata"
 
 	"golang.org/x/net/context"
@@ -20,8 +20,8 @@ func main() {
 	service := grpc.NewService()
 	service.Init(
 		micro.Flags(cli.StringFlag{
-			Name: "service_name",
-			Value: "go.micro.srv.greeter",
+			Name:        "service_name",
+			Value:       "go.micro.srv.greeter",
 			Destination: &serviceName,
 		}),
 	)

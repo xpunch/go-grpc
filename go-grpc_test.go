@@ -1,13 +1,14 @@
 package grpc
 
 import (
+	"crypto/tls"
 	"sync"
 	"testing"
 
+	hello "github.com/micro/go-grpc/examples/greeter/server/proto/hello"
 	"github.com/micro/go-micro"
 	"github.com/micro/go-micro/registry/mock"
-
-	hello "github.com/micro/go-grpc/examples/greeter/server/proto/hello"
+	mls "github.com/micro/misc/lib/tls"
 
 	"golang.org/x/net/context"
 )
@@ -99,6 +100,69 @@ func TestGRPCFunction(t *testing.T) {
 
 	// create client
 	say := hello.NewSayClient("test.function", fn.Client())
+
+	// call service
+	rsp, err := say.Hello(context.Background(), &hello.Request{
+		Name: "John",
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	// check message
+	if rsp.Msg != "Hello John" {
+		t.Fatal("unexpected response %s", rsp.Msg)
+	}
+}
+
+func TestGRPCTLSService(t *testing.T) {
+	var wg sync.WaitGroup
+	wg.Add(1)
+
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	// create mock registry
+	r := mock.NewRegistry()
+
+	// create cert
+	cert, err := mls.Certificate("test.service")
+	if err != nil {
+		t.Fatal(err)
+	}
+	config := &tls.Config{
+		Certificates:       []tls.Certificate{cert},
+		InsecureSkipVerify: true,
+	}
+
+	// create GRPC service
+	service := NewService(
+		micro.Name("test.service"),
+		micro.Registry(r),
+		micro.AfterStart(func() error {
+			wg.Done()
+			return nil
+		}),
+		micro.Context(ctx),
+		// set TLS config
+		WithTLS(config),
+	)
+
+	// register test handler
+	hello.RegisterSayHandler(service.Server(), &testHandler{})
+
+	// run service
+	go func() {
+		if err := service.Run(); err != nil {
+			t.Fatal(err)
+		}
+	}()
+
+	// wait for start
+	wg.Wait()
+
+	// create client
+	say := hello.NewSayClient("test.service", service.Client())
 
 	// call service
 	rsp, err := say.Hello(context.Background(), &hello.Request{

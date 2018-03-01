@@ -67,7 +67,7 @@ func TestGRPCService(t *testing.T) {
 
 	// check message
 	if rsp.Msg != "Hello John" {
-		t.Fatal("unexpected response %s", rsp.Msg)
+		t.Fatalf("unexpected response %s", rsp.Msg)
 	}
 }
 
@@ -111,7 +111,7 @@ func TestGRPCFunction(t *testing.T) {
 
 	// check message
 	if rsp.Msg != "Hello John" {
-		t.Fatal("unexpected response %s", rsp.Msg)
+		t.Fatalf("unexpected response %s", rsp.Msg)
 	}
 }
 
@@ -174,6 +174,6 @@ func TestGRPCTLSService(t *testing.T) {
 
 	// check message
 	if rsp.Msg != "Hello John" {
-		t.Fatal("unexpected response %s", rsp.Msg)
+		t.Fatalf("unexpected response %s", rsp.Msg)
 	}
 }

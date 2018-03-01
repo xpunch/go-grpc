@@ -30,11 +30,9 @@ Service discovery is used to resolve service names to addresses.
 
 ### Consul
 
-[Consul](https://www.consul.io/) is used as the default service discovery system. 
+[Consul](https://www.consul.io/) is used as the default service discovery system. See the [install guide](https://www.consul.io/intro/getting-started/install.html).
 
 Discovery is pluggable. Find plugins for etcd, kubernetes, zookeeper and more in the [micro/go-plugins](https://github.com/micro/go-plugins) repo.
-
-[Install guide](https://www.consul.io/intro/getting-started/install.html)
 
 ### mDNS
 

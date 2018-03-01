@@ -1,6 +1,7 @@
 package grpc
 
 import (
+	"context"
 	"crypto/tls"
 	"sync"
 	"testing"
@@ -9,8 +10,6 @@ import (
 	"github.com/micro/go-micro"
 	"github.com/micro/go-micro/registry/mock"
 	mls "github.com/micro/misc/lib/tls"
-
-	"golang.org/x/net/context"
 )
 
 type testHandler struct{}

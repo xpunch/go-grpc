@@ -53,13 +53,12 @@ with zero other code changes.
 package main
 
 import (
+	"context"
 	"time"
 
 	"github.com/micro/go-grpc"
 	"github.com/micro/go-micro"
 	hello "github.com/micro/go-grpc/examples/greeter/server/proto/hello"
-
-	"golang.org/x/net/context"
 )
 
 type Say struct{}

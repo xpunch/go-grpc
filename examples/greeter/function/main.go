@@ -1,13 +1,12 @@
 package main
 
 import (
+	"context"
 	"log"
 
 	"github.com/micro/go-grpc"
 	hello "github.com/micro/go-grpc/examples/greeter/server/proto/hello"
 	"github.com/micro/go-micro"
-
-	"golang.org/x/net/context"
 )
 
 type Say struct{}
@@ -26,7 +25,6 @@ func main() {
 
 	fn.Handle(new(Say))
 
-	// Run server
 	if err := fn.Run(); err != nil {
 		log.Fatal(err)
 	}

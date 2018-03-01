@@ -1,14 +1,13 @@
 package main
 
 import (
+	"context"
 	"log"
 	"time"
 
 	"github.com/micro/go-grpc"
 	hello "github.com/micro/go-grpc/examples/greeter/server/proto/hello"
 	"github.com/micro/go-micro"
-
-	"golang.org/x/net/context"
 )
 
 type Say struct{}

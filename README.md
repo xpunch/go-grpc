@@ -22,8 +22,6 @@ Protobuf is required for code generation
 
 You'll need to install:
 
-- [protoc](https://github.com/google/protobuf)
-- [protoc-gen-go](https://github.com/golang/protobuf)
 - [protoc-gen-micro](https://github.com/micro/protoc-gen-micro)
 
 ## Service Discovery

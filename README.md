@@ -7,11 +7,16 @@ standard gRPC services seamlessly, including the [grpc-gateway](https://github.c
 
 Find an example greeter service in [examples/greeter](https://github.com/micro/go-grpc/tree/master/examples/greeter).
 
-## Dependencies
+## Getting Started
 
-Go-grpc shares the same dependencies as go-micro
+- [Install Protobuf](#install-protobuf)
+- [Service Discovery](#service-discovery)
+- [Writing a Service](#writing-a-service)
+- [Using with Micro](#use-with-micro)
+- [Using with gRPC Gateway](#use-with-grpc-gateway)
 
-### Install Protobuf
+
+## Install Protobuf
 
 Protobuf is required for code generation
 
@@ -21,9 +26,11 @@ You'll need to install:
 - [protoc-gen-go](https://github.com/golang/protobuf)
 - [protoc-gen-micro](https://github.com/micro/protoc-gen-micro)
 
-### Service Discovery
+## Service Discovery
 
 Service discovery is used to resolve service names to addresses. 
+
+### Consul
 
 [Consul](https://www.consul.io/) is used as the default service discovery system. 
 
@@ -31,12 +38,15 @@ Discovery is pluggable. Find plugins for etcd, kubernetes, zookeeper and more in
 
 [Install guide](https://www.consul.io/intro/getting-started/install.html)
 
+### mDNS
+
 [Multicast DNS](https://en.wikipedia.org/wiki/Multicast_DNS) is a built in alternative for zero dependencies. 
 
 Pass `--registry=mdns` to any command or the enviroment variable `MICRO_REGISTRY=mdns`
 
 ```
 MICRO_REGISTRY=mdns go run main.go
+```
 
 ## Writing a Service
 
@@ -114,7 +124,7 @@ Flag usage of plugins
 micro --client=grpc --server=grpc
 ```
 
-## Using with gRPC Gateway
+## Use with gRPC Gateway
 
 Go-grpc seamlessly integrates with the gRPC ecosystem. This means the grpc-gateway can be used as per usual.
 

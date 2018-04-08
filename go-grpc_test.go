@@ -9,7 +9,7 @@ import (
 	hello "github.com/micro/go-grpc/examples/greeter/server/proto/hello"
 	"github.com/micro/go-micro"
 	"github.com/micro/go-micro/registry/mock"
-	mls "github.com/micro/misc/lib/tls"
+	mls "github.com/micro/util/go/lib/tls"
 )
 
 type testHandler struct{}

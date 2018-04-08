@@ -26,7 +26,7 @@ func main() {
 		}),
 	)
 
-	cl := hello.NewSayClient(serviceName, service.Client())
+	cl := hello.SayServiceClient(serviceName, service.Client())
 
 	rsp, err := cl.Hello(context.TODO(), &hello.Request{
 		Name: "John",

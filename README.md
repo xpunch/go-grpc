@@ -93,7 +93,7 @@ simply include the grpc client plugin and rebuild the toolkit.
 ### Go Get
 
 ```
-go get github.com/micro/grpc/cmd/micro
+go get github.com/micro/go-grpc/cmd/micro
 ```
 
 ### Build Yourself

@@ -54,7 +54,7 @@ func TestGRPCService(t *testing.T) {
 	wg.Wait()
 
 	// create client
-	say := hello.NewSayClient("test.service", service.Client())
+	say := hello.SayServiceClient("test.service", service.Client())
 
 	// call service
 	rsp, err := say.Hello(context.Background(), &hello.Request{
@@ -98,7 +98,7 @@ func TestGRPCFunction(t *testing.T) {
 	wg.Wait()
 
 	// create client
-	say := hello.NewSayClient("test.function", fn.Client())
+	say := hello.SayServiceClient("test.function", fn.Client())
 
 	// call service
 	rsp, err := say.Hello(context.Background(), &hello.Request{
@@ -161,7 +161,7 @@ func TestGRPCTLSService(t *testing.T) {
 	wg.Wait()
 
 	// create client
-	say := hello.NewSayClient("test.service", service.Client())
+	say := hello.SayServiceClient("test.service", service.Client())
 
 	// call service
 	rsp, err := say.Hello(context.Background(), &hello.Request{

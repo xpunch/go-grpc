@@ -50,7 +50,7 @@ type sayService struct {
 	serviceName string
 }
 
-func SayServiceClient(serviceName string, c client.Client) SayService {
+func NewSayService(serviceName string, c client.Client) SayService {
 	if c == nil {
 		c = client.NewClient()
 	}
@@ -80,13 +80,20 @@ type SayHandler interface {
 }
 
 func RegisterSayHandler(s server.Server, hdlr SayHandler, opts ...server.HandlerOption) {
-	s.Handle(s.NewHandler(&Say{hdlr}, opts...))
+	type say interface {
+		Hello(ctx context.Context, in *Request, out *Response) error
+	}
+	type Say struct {
+		say
+	}
+	h := &sayHandler{hdlr}
+	s.Handle(s.NewHandler(&Say{h}, opts...))
 }
 
-type Say struct {
+type sayHandler struct {
 	SayHandler
 }
 
-func (h *Say) Hello(ctx context.Context, in *Request, out *Response) error {
+func (h *sayHandler) Hello(ctx context.Context, in *Request, out *Response) error {
 	return h.SayHandler.Hello(ctx, in, out)
 }

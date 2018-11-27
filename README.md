@@ -18,7 +18,3 @@ Find an example greeter service in [examples/greeter](https://github.com/micro/g
 ## Getting Started
 
 See the [docs](https://micro.mu/docs/go-grpc.html) to get started.
-
-## Examples
-
-Find an example greeter service in [examples/greeter](https://github.com/micro/go-grpc/tree/master/examples/greeter).

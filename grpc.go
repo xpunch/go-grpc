@@ -5,6 +5,7 @@ import (
 
 	"github.com/micro/go-micro"
 
+	broker "github.com/micro/go-plugins/broker/grpc"
 	client "github.com/micro/go-plugins/client/grpc"
 	server "github.com/micro/go-plugins/server/grpc"
 )
@@ -15,11 +16,14 @@ func NewService(opts ...micro.Option) micro.Service {
 	c := client.NewClient()
 	// our grpc server
 	s := server.NewServer()
+	// our grpc broker
+	b := broker.NewBroker()
 
 	// create options with priority for our opts
 	options := []micro.Option{
 		micro.Client(c),
 		micro.Server(s),
+		micro.Broker(b),
 	}
 
 	// append passed in opts
@@ -35,11 +39,14 @@ func NewFunction(opts ...micro.Option) micro.Function {
 	c := client.NewClient()
 	// our grpc server
 	s := server.NewServer()
+	// our grpc broker
+	b := broker.NewBroker()
 
 	// create options with priority for our opts
 	options := []micro.Option{
 		micro.Client(c),
 		micro.Server(s),
+		micro.Broker(b),
 		micro.RegisterTTL(time.Minute),
 		micro.RegisterInterval(time.Second * 30),
 	}

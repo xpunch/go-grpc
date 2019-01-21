@@ -8,7 +8,7 @@ import (
 
 	hello "github.com/micro/go-grpc/examples/greeter/server/proto/hello"
 	"github.com/micro/go-micro"
-	"github.com/micro/go-micro/registry/mock"
+	"github.com/micro/go-micro/registry/memory"
 	mls "github.com/micro/util/go/lib/tls"
 )
 
@@ -26,8 +26,8 @@ func TestGRPCService(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	// create mock registry
-	r := mock.NewRegistry()
+	// create memory registry
+	r := memory.NewRegistry()
 
 	// create GRPC service
 	service := NewService(
@@ -80,7 +80,7 @@ func TestGRPCFunction(t *testing.T) {
 	// create service
 	fn := NewFunction(
 		micro.Name("test.function"),
-		micro.Registry(mock.NewRegistry()),
+		micro.Registry(memory.NewRegistry()),
 		micro.AfterStart(func() error {
 			wg.Done()
 			return nil
@@ -121,8 +121,8 @@ func TestGRPCTLSService(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	// create mock registry
-	r := mock.NewRegistry()
+	// create memory registry
+	r := memory.NewRegistry()
 
 	// create cert
 	cert, err := mls.Certificate("test.service")

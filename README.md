@@ -10,7 +10,7 @@ The go-grpc library uses the go-micro broker, client and server plugins which ma
 [github.com/grpc/grpc-go](https://github.com/grpc/grpc-go) internally. 
 This means we ignore the go-micro codec and transport but provide a native grpc experience.
 
-<img src="https://micro.mu/docs/images/go-grpc.png" />
+<img src="https://micro.mu/docs/images/go-grpc.svg" />
 
 ## Features
 

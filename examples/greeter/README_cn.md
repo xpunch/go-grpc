@@ -72,5 +72,5 @@ go run gateway/main.go
 ```
 curl -d '{"name": "john"}' http://localhost:8080/greeter/hello
 # 返回
-{"msg":"Hello john"}l
+{"msg":"Hello john"}
 ```

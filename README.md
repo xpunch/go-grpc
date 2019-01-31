@@ -2,8 +2,6 @@
 
 A micro gRPC framework. A simplified experience for building gRPC services. 
 
-[i18n support](#I18n)
-
 ## Overview
 
 **Go gRPC** makes use of [go-micro](https://github.com/micro/go-micro) plugins to create a simpler framework for gRPC development. 

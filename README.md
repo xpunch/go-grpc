@@ -33,6 +33,6 @@ Find an example greeter service in [examples/greeter](https://github.com/micro/g
 
 See the [docs](https://micro.mu/docs/go-grpc.html) to get started.
 
-# I18n
+## I18n
 
-## [中文](README_cn.md)
+### [中文](README_cn.md)

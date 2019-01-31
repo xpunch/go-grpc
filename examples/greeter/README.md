@@ -6,7 +6,7 @@ An example Go-Micro based gRPC service
 
 - **server** - a gRPC greeter service
 - **client** - a gRPC client that calls the service once
-- **function** - a gRPC greeter function
+- **function** - a gRPC greeter function，more about [Function](https://micro.mu/docs/writing-a-go-function.html)
 - **gateway** - a grpc-gateway
 
 ## Test Service
@@ -58,3 +58,7 @@ Curl gateway
 ```
 curl -d '{"name": "john"}' http://localhost:8080/greeter/hello
 ```
+
+## i18n
+
+### [中文](README_cn.md)

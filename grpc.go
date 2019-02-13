@@ -12,11 +12,11 @@ import (
 // NewService returns a grpc service compatible with go-micro.Service
 func NewService(opts ...micro.Option) micro.Service {
 	// our grpc client
-	c := client.DefaultClient
+	c := client.NewClient()
 	// our grpc server
-	s := server.DefaultServer
+	s := server.NewServer()
 	// our grpc broker
-	b := broker.DefaultBroker
+	b := broker.NewBroker()
 
 	// create options with priority for our opts
 	options := []micro.Option{
@@ -35,11 +35,11 @@ func NewService(opts ...micro.Option) micro.Service {
 // NewFunction returns a grpc service compatible with go-micro.Function
 func NewFunction(opts ...micro.Option) micro.Function {
 	// our grpc client
-	c := client.DefaultClient
+	c := client.NewClient()
 	// our grpc server
-	s := server.DefaultServer
+	s := server.NewServer()
 	// our grpc broker
-	b := broker.DefaultBroker
+	b := broker.NewBroker()
 
 	// create options with priority for our opts
 	options := []micro.Option{

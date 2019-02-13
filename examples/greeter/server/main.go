@@ -4,9 +4,9 @@ import (
 	"context"
 	"log"
 
-	"github.com/micro/go-micro"
 	"github.com/micro/go-grpc"
 	hello "github.com/micro/go-grpc/examples/greeter/server/proto/hello"
+	"github.com/micro/go-micro"
 )
 
 type Say struct{}
